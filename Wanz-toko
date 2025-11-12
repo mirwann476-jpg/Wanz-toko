@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wannz Store - Top Up Diamond Cepat & Aman</title>
+    
+    <!-- Memuat Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Memuat Font Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Menggunakan font Inter sebagai default */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0F172A; /* bg-slate-900 */
+            color: #F1F5F9; /* text-slate-100 */
+        }
+        /* Style kustom untuk item yang dipilih */
+        .selectable-item.selected {
+            background-color: #3B82F6; /* bg-blue-600 */
+            color: #FFFFFF;
+            border-color: #60A5FA; /* border-blue-400 */
+        }
+        /* Style untuk pesan notifikasi */
+        #message-box {
+            display: none;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-top: 1.5rem;
+            font-weight: 500;
+        }
+        #message-box.success {
+            display: block;
+            background-color: #10B981; /* bg-emerald-500 */
+            color: #FFFFFF;
+        }
+        #message-box.error {
+            display: block;
+            background-color: #EF4444; /* bg-red-500 */
+            color: #FFFFFF;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header / Navigasi -->
+    <header class="bg-slate-800/50 backdrop-blur-sm sticky top-0 z-50 shadow-lg">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+            <div class="flex-shrink-0">
+                <a href="#" class="text-2xl font-bold text-blue-400">
+                    Wannz Store
+                </a>
+            </div>
+            <div class="hidden sm:flex space-x-6">
+                <a href="#" class="text-slate-200 hover:text-blue-400 transition-colors">Home</a>
+                <a href="#harga" class="text-slate-200 hover:text-blue-400 transition-colors">Daftar Harga</a>
+                <a href="#cara-beli" class="text-slate-200 hover:text-blue-400 transition-colors">Cara Beli</a>
+            </div>
+            <div class="sm:hidden">
+                <!-- Tombol menu mobile (bisa ditambahkan fungsionalitasnya) -->
+                <button class="text-slate-200 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Konten Utama -->
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <!-- Kolom Kiri: Detail Game & Input ID -->
+            <div class="lg:col-span-2 space-y-6">
+                
+                <!-- Detail Game (Menggunakan Logo MLBB Placeholder) -->
+                <div class="bg-slate-800 rounded-lg shadow-xl p-6 flex items-center space-x-6">
+                    <!-- Logo Mobile Legends (Placeholder) -->
+                    <img src="https://placehold.co/100x100/1D4ED8/FDE047?text=MLBB" alt="Logo Mobile Legends" class="w-24 h-24 rounded-md object-cover border-2 border-yellow-400">
+                    <div>
+                        <h1 class="text-3xl font-bold text-white">Top Up Diamond Mobile Legends</h1>
+                        <p class="text-slate-400 mt-1">Layanan instan, aman, dan terpercaya untuk para Legends.</p>
+                        <span class="inline-block mt-3 px-3 py-1 bg-green-500/10 text-green-400 rounded-full text-sm font-medium">Buka 24 Jam</span>
+                    </div>
+                </div>
+
+                <!-- Langkah 1: Masukkan ID Pengguna -->
+                <div id="cara-beli" class="bg-slate-800 rounded-lg shadow-xl p-6">
+                    <h2 class="text-xl font-semibold text-white mb-4 border-l-4 border-blue-400 pl-3">
+                        <span class="bg-blue-600 text-white rounded-full w-6 h-6 inline-flex items-center justify-center mr-2">1</span>
+                        Masukkan Data Akun Anda
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="user_id" class="block text-sm font-medium text-slate-300 mb-1">User ID</label>
+                            <input type="text" id="user_id" name="user_id" class="w-full bg-slate-700 border border-slate-600 rounded-lg px-3 py-2 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="12345678">
+                        </div>
+                        <div>
+                            <label for="zone_id" class="block text-sm font-medium text-slate-300 mb-1">Zone ID</label>
+                            <input type="text" id="zone_id" name="zone_id" class="w-full bg-slate-700 border border-slate-600 rounded-lg px-3 py-2 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="(2109)">
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-400 mt-3">
+                        Untuk menemukan ID Anda, klik pada ikon profil Anda di dalam game. User ID dan Zone ID Anda akan terlihat di bawah nama profil Anda. Contoh: 12345678 (2109).
+                    </p>
+                </div>
+
+                <!-- Langkah 2: Pilih Nominal -->
+                <div id="harga" class="bg-slate-800 rounded-lg shadow-xl p-6">
+                    <h2 class="text-xl font-semibold text-white mb-4 border-l-4 border-blue-400 pl-3">
+                        <span class="bg-blue-600 text-white rounded-full w-6 h-6 inline-flex items-center justify-center mr-2">2</span>
+                        Pilih Nominal Top Up
+                    </h2>
+                    <div id="diamond-list" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                        <!-- Item akan ditambahkan oleh JavaScript -->
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Kolom Kanan: Detail Pembayaran -->
+            <div class="lg:col-span-1 space-y-6 lg:sticky lg:top-24">
+                
+                <!-- Langkah 3: Pilih Pembayaran -->
+                <div class="bg-slate-800 rounded-lg shadow-xl p-6">
+                    <h2 class="text-xl font-semibold text-white mb-4 border-l-4 border-blue-400 pl-3">
+                        <span class="bg-blue-600 text-white rounded-full w-6 h-6 inline-flex items-center justify-center mr-2">3</span>
+                        Pilih Metode Pembayaran
+                    </h2>
+                    <div id="payment-list" class="space-y-3">
+                        <!-- Item akan ditambahkan oleh JavaScript -->
+                    </div>
+                    
+                    <!-- Box QRIS DANA -->
+                    <div class="mt-6 p-4 bg-slate-700 rounded-lg border border-slate-600 text-center">
+                        <p class="text-sm font-semibold text-white mb-3">Scan untuk Pembayaran QRIS DANA:</p>
+                        <!-- Gambar QRIS DANA yang diunggah pengguna -->
+                        <img src="uploaded:IMG-20251111-WA0019.jpg-2282e29d-372f-480d-858a-b7f558a43530" alt="QRIS DANA" class="w-48 h-48 mx-auto rounded-md border border-slate-500 p-1 bg-white">
+                        <p class="text-xs text-slate-400 mt-3">
+                            *Pastikan nominal pembayaran sesuai dengan pesanan Anda.
+                        </p>
+                    </div>
+
+                    <!-- Info DANA Manual -->
+                    <p class="text-xs text-slate-400 mt-4 p-3 bg-slate-700 rounded-lg border border-slate-600">
+                        *Transfer manual via DANA juga dapat dikirim ke nomor: 
+                        <span class="font-bold text-yellow-300">085147283512</span> (a.n. Wannz). 
+                        Konfirmasi via WhatsApp setelah transfer.
+                    </p>
+                </div>
+
+                <!-- Langkah 4: Beli -->
+                <div class="bg-slate-800 rounded-lg shadow-xl p-6">
+                    <h2 class="text-xl font-semibold text-white mb-4 border-l-4 border-blue-400 pl-3">
+                        <span class="bg-blue-600 text-white rounded-full w-6 h-6 inline-flex items-center justify-center mr-2">4</span>
+                        Konfirmasi Pembelian
+                    </h2>
+                    
+                    <div class="space-y-2 text-sm text-slate-300 mb-4">
+                        <div class="flex justify-between">
+                            <span>Item:</span>
+                            <span id="summary-item" class="font-medium text-white">-</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Pembayaran:</span>
+                            <span id="summary-payment" class="font-medium text-white">-</span>
+                        </div>
+                        <div class="flex justify-between text-lg font-bold text-blue-400 pt-2 border-t border-slate-700 mt-2">
+                            <span>Total Bayar:</span>
+                            <span id="summary-price">Rp 0</span>
+                        </div>
+                    </div>
+
+                    <!-- ✨ Fitur Gemini API -->
+                    <div id="gemini-feature" class="mt-4 hidden">
+                        <button id="gemini-button" class="w-full bg-indigo-500 hover:bg-indigo-600 text-white font-medium py-2 px-4 rounded-lg text-sm transition-all flex items-center justify-center space-x-2 disabled:opacity-50">
+                            <span id="gemini-button-text">✨ Dapatkan Ide Penggunaan Diamond</span>
+                            <!-- Ikon Loading -->
+                            <svg id="gemini-loader" class="animate-spin h-4 w-4 text-white hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                        </button>
+                        <div id="gemini-result" class="mt-3 p-3 bg-slate-700 rounded-lg text-sm text-slate-200 hidden whitespace-pre-wrap"></div>
+                    </div>
+                    <!-- ✨ Akhir Fitur Gemini API -->
+
+                    <div class="mt-4">
+                        <label for="email" class="block text-sm font-medium text-slate-300 mb-1">Email (Untuk bukti pembayaran)</label>
+                        <input type="email" id="email" name="email" class="w-full bg-slate-700 border border-slate-600 rounded-lg px-3 py-2 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="email@anda.com">
+                    </div>
+
+                    <button id="buy-button" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg mt-6 text-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-500/50">
+                        Beli Sekarang
+                    </button>
+                    
+                    <!-- Kotak Pesan Notifikasi -->
+                    <div id="message-box"></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 mt-16 border-t border-slate-700">
+        <div class="container mx-auto px-6 py-8 text-center text-slate-400 text-sm">
+            © 2025 Wannz Store. Didukung oleh teknologi canggih.
+            <p class="mt-2 text-xs">Semua merek dagang adalah milik dari pemiliknya masing-masing.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Data produk (contoh)
+        const diamondPackages = [
+            // Diamond Packages (Diurutkan berdasarkan nominal)
+            { id: 'd5', name: '5 Diamonds', price: 1600, price_text: 'Rp 1.600' },
+            { id: 'd10', name: '10 Diamonds', price: 3040, price_text: 'Rp 3.040' },
+            { id: 'd12', name: '12 Diamonds', price: 3600, price_text: 'Rp 3.600' },
+            { id: 'd14', name: '14 Diamonds', price: 4050, price_text: 'Rp 4.050' },
+            { id: 'd15', name: '15 Diamonds', price: 4500, price_text: 'Rp 4.500' },
+            { id: 'd18', name: '18 Diamonds', price: 5200, price_text: 'Rp 5.200' },
+            { id: 'd19', name: '19 Diamonds', price: 5520, price_text: 'Rp 5.520' },
+            { id: 'd20', name: '20 Diamonds', price: 6200, price_text: 'Rp 6.200' },
+            // Diamond Baru yang Ditambahkan
+            { id: 'd22', name: '22 Diamonds', price: 6570, price_text: 'Rp 6.570' },
+            { id: 'd28', name: '28 Diamonds', price: 8200, price_text: 'Rp 8.200' },
+            { id: 'd30', name: '30 Diamonds', price: 8700, price_text: 'Rp 8.700' },
+            { id: 'd36', name: '36 Diamonds', price: 10200, price_text: 'Rp 10.200' },
+            { id: 'd42', name: '42 Diamonds', price: 12120, price_text: 'Rp 12.120' },
+            { id: 'd45', name: '45 Diamonds', price: 13200, price_text: 'Rp 13.200' },
+            { id: 'd46', name: '46 Diamonds', price: 13275, price_text: 'Rp 13.275' },
+            { id: 'd54', name: '54 Diamonds', price: 15132, price_text: 'Rp 15.132' },
+            { id: 'd60', name: '60 Diamonds', price: 17305, price_text: 'Rp 17.305' },
+            { id: 'd64', name: '64 Diamonds', price: 17650, price_text: 'Rp 17.650' },
+            { id: 'd67', name: '67 Diamonds', price: 18734, price_text: 'Rp 18.734' },
+            { id: 'd71', name: '71 Diamonds', price: 19665, price_text: 'Rp 19.665' },
+            { id: 'd74', name: '74 Diamonds', price: 20444, price_text: 'Rp 20.444' },
+            { id: 'd75', name: '75 Diamonds', price: 21896, price_text: 'Rp 21.896' },
+            { id: 'd80', name: '80 Diamonds', price: 22313, price_text: 'Rp 22.313' },
+            { id: 'd85', name: '85 Diamonds', price: 23177, price_text: 'Rp 23.177' },
+            { id: 'd88', name: '88 Diamonds', price: 24514, price_text: 'Rp 24.514' },
+            { id: 'd89', name: '89 Diamonds', price: 24752, price_text: 'Rp 24.752' },
+        ];
+
+        // Data metode pembayaran (contoh)
+        const paymentMethods = [
+            { id: 'qris', name: 'QRIS (Semua E-Wallet)' },
+            { id: 'gopay', name: 'GoPay' },
+            { id: 'ovo', name: 'OVO' },
+            { id: 'dana', name: 'DANA' },
+            { id: 'alfamart', name: 'Alfamart / Indomaret' },
+        ];
+
+        // Variabel untuk menyimpan pilihan
+        let selectedDiamond = null;
+        let selectedPayment = null;
+
+        // Referensi Elemen DOM
+        const diamondListEl = document.getElementById('diamond-list');
+        const paymentListEl = document.getElementById('payment-list');
+        const summaryItemEl = document.getElementById('summary-item');
+        const summaryPaymentEl = document.getElementById('summary-payment');
+        const summaryPriceEl = document.getElementById('summary-price');
+        const buyButtonEl = document.getElementById('buy-button');
+        const messageBoxEl = document.getElementById('message-box');
+
+        // Referensi Fitur Gemini
+        const geminiFeatureEl = document.getElementById('gemini-feature');
+        const geminiButtonEl = document.getElementById('gemini-button');
+        const geminiButtonTextEl = document.getElementById('gemini-button-text');
+        const geminiLoaderEl = document.getElementById('gemini-loader');
+        const geminiResultEl = document.getElementById('gemini-result');
+
+        // Fungsi untuk format mata uang
+        function formatCurrency(number) {
+            return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(number);
+        }
+
+        // Fungsi untuk membuat item yang bisa dipilih
+        function createSelectableItem(item, type) {
+            const div = document.createElement('div');
+            div.className = 'selectable-item bg-slate-700 p-4 rounded-lg cursor-pointer border-2 border-slate-600 hover:border-blue-500 transition-all';
+            div.dataset.id = item.id;
+            
+            if (type === 'diamond') {
+                div.innerHTML = `
+                    <div class="font-bold text-white">${item.name}</div>
+                    <div class="text-sm text-blue-300 mt-1">${item.price_text}</div>
+                `;
+                div.addEventListener('click', () => selectDiamond(div, item));
+            } else if (type === 'payment') {
+                div.innerHTML = `<div class="font-medium text-white">${item.name}</div>`;
+                div.addEventListener('click', () => selectPayment(div, item));
+            }
+            return div;
+        }
+
+        // Fungsi untuk memilih diamond
+        function selectDiamond(element, item) {
+            // Hapus 'selected' dari semua item diamond
+            diamondListEl.querySelectorAll('.selectable-item').forEach(el => el.classList.remove('selected'));
+            // Tambah 'selected' ke item yang diklik
+            element.classList.add('selected');
+            // Simpan pilihan
+            selectedDiamond = item;
+            updateSummary();
+
+            // ✨ Tampilkan fitur Gemini
+            geminiFeatureEl.classList.remove('hidden');
+            geminiResultEl.classList.add('hidden'); // Sembunyikan hasil lama
+            geminiResultEl.textContent = '';
+            geminiButtonTextEl.textContent = `✨ Dapatkan Ide Penggunaan ${item.name}`;
+            setGeminiLoading(false); // Pastikan tombol tidak dalam keadaan loading saat paket diubah
+        }
+
+        // Fungsi untuk memilih pembayaran
+        function selectPayment(element, item) {
+            // Hapus 'selected' dari semua item pembayaran
+            paymentListEl.querySelectorAll('.selectable-item').forEach(el => el.classList.remove('selected'));
+            // Tambah 'selected' ke item yang diklik
+            element.classList.add('selected');
+            // Simpan pilihan
+            selectedPayment = item;
+            updateSummary();
+        }
+
+        // Fungsi untuk update ringkasan pesanan
+        function updateSummary() {
+            if (selectedDiamond) {
+                summaryItemEl.textContent = selectedDiamond.name;
+                summaryPriceEl.textContent = formatCurrency(selectedDiamond.price);
+            } else {
+                summaryItemEl.textContent = '-';
+                summaryPriceEl.textContent = 'Rp 0';
+            }
+
+            if (selectedPayment) {
+                summaryPaymentEl.textContent = selectedPayment.name;
+            } else {
+                summaryPaymentEl.textContent = '-';
+            }
+        }
+
+        // Fungsi untuk menampilkan pesan
+        function showMessage(message, type = 'error') {
+            messageBoxEl.textContent = message;
+            messageBoxEl.className = type === 'success' ? 'success' : 'error'; 
+            // Sembunyikan pesan setelah 5 detik
+            setTimeout(() => {
+                messageBoxEl.className = '';
+                messageBoxEl.style.display = 'none';
+            }, 5000);
+        }
+
+        // ✨ --- Fungsi Gemini API ---
+
+        /**
+         * Menangani state loading pada tombol Gemini.
+         * @param {boolean} isLoading - True jika sedang memuat, false jika selesai.
+         */
+        function setGeminiLoad
